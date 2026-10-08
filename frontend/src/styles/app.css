@@ -1,0 +1,81 @@
+/* ---------- MedSync full-stack additions ---------- */
+.panel, .stat, .case-actions { box-shadow: var(--shadow-card); }
+.logo__mark { fill: var(--teal); }
+.link { color: var(--scrub); }
+.topbar__date { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-sm); color: var(--ink-2); font-weight: 500; }
+@media (max-width: 560px) { .topbar__date { display: none; } }
+
+/* auth + welcome slider */
+.auth { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(420px, 1fr); background: var(--surface); }
+.auth__visual { position: relative; background: var(--scrub-deep); overflow: hidden; }
+.auth__brand { position: absolute; z-index: 3; top: 28px; left: 32px; }
+.auth__panel { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 24px; background: linear-gradient(180deg, #f7faff 0%, #ffffff 60%); }
+.auth__card { width: 100%; max-width: 440px; display: grid; gap: 14px; }
+.auth__title { font-size: 1.85rem; }
+.auth__form { display: grid; gap: 14px; margin-top: 4px; }
+.auth__switch { font-size: var(--fs-sm); color: var(--ink-2); }
+.auth__foot { margin-top: 32px; font-size: var(--fs-xs); color: var(--ink-3); }
+.input-group { display: flex; align-items: center; gap: 4px; }
+.input-group .input { flex: 1; }
+.demo-box { border: 1px dashed var(--line-strong); border-radius: var(--r-md); padding: 10px 14px; font-size: var(--fs-sm); background: var(--surface-2); }
+.demo-box summary { cursor: pointer; font-weight: 600; color: var(--ink-2); }
+.demo-box ul { display: grid; gap: 4px; margin-top: 8px; }
+.demo-box li { display: flex; justify-content: space-between; gap: 10px; }
+.demo-box code { font-size: 0.85em; }
+
+.slider { position: absolute; inset: 0; }
+.slider__slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 0.9s ease, transform 6s ease; transform: scale(1.03); }
+.slider__slide.is-active { opacity: 1; transform: scale(1); }
+.slider__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slider__slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 35, 66, 0.35) 0%, rgba(10, 35, 66, 0.15) 35%, rgba(10, 35, 66, 0.88) 100%); }
+.slider__caption { position: absolute; z-index: 2; left: 40px; right: 40px; bottom: 76px; color: #fff; max-width: 560px; }
+.slider__eyebrow { display: inline-block; font-size: var(--fs-sm); font-weight: 600; color: #bff0e9; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; background: rgba(14, 159, 142, 0.28); }
+.slider__caption h2 { font-size: clamp(1.6rem, 2.6vw, 2.3rem); line-height: 1.15; font-weight: 700; }
+.slider__caption p { margin-top: 10px; color: #dbe6f4; font-size: var(--fs-lg); line-height: 1.55; }
+.slider__dots { position: absolute; z-index: 3; left: 40px; bottom: 36px; display: flex; gap: 8px; }
+.slider__dot { width: 28px; height: 4px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, 0.4); padding: 0; }
+.slider__dot.is-active { background: #fff; }
+@media (prefers-reduced-motion: reduce) { .slider__slide { transition: none; transform: none; } }
+@media (max-width: 960px) {
+  .auth { grid-template-columns: 1fr; }
+  .auth__visual { height: 300px; }
+  .slider__caption { left: 22px; right: 22px; bottom: 50px; }
+  .slider__caption p { font-size: var(--fs-md); }
+  .slider__dots { left: 22px; bottom: 22px; }
+  .auth__brand { top: 18px; left: 22px; }
+}
+
+/* hero banners and info cards */
+.hero-banner { display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; gap: 20px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 14px 20px 14px 14px; box-shadow: var(--shadow-card); }
+.hero-banner img { width: 132px; height: 92px; object-fit: cover; border-radius: var(--r-md); }
+.hero-banner h1 { font-size: var(--fs-xl); }
+.hero-banner p { color: var(--ink-2); margin-top: 4px; max-width: 70ch; }
+@media (max-width: 640px) { .hero-banner { grid-template-columns: 1fr; } .hero-banner img { width: 100%; height: 120px; } }
+.info-card { display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 12px; box-shadow: var(--shadow-card); }
+.info-card img { width: 112px; height: 84px; object-fit: cover; border-radius: var(--r-md); }
+.info-card h2 { font-size: var(--fs-md); }
+.info-card p { font-size: var(--fs-sm); color: var(--ink-2); margin-top: 4px; }
+.p-hero--image { position: relative; overflow: hidden; padding-right: 210px; }
+.p-hero__img { position: absolute; right: 0; top: 0; width: 190px; height: 100%; object-fit: cover; opacity: 0.85; -webkit-mask-image: linear-gradient(90deg, transparent, #000 40%); mask-image: linear-gradient(90deg, transparent, #000 40%); }
+.patient[dir='rtl'] .p-hero--image { padding-right: 24px; padding-left: 210px; }
+.patient[dir='rtl'] .p-hero__img { right: auto; left: 0; -webkit-mask-image: linear-gradient(270deg, transparent, #000 40%); mask-image: linear-gradient(270deg, transparent, #000 40%); }
+@media (max-width: 560px) { .p-hero--image { padding-right: 24px; } .patient[dir='rtl'] .p-hero--image { padding-left: 24px; } .p-hero__img { display: none; } }
+
+/* states */
+.loading { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 40px; color: var(--ink-2); }
+.loading--page { min-height: 100vh; flex-direction: column; }
+.spinner { width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--scrub-soft); border-top-color: var(--scrub); animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.error-state { display: grid; justify-items: center; gap: 8px; text-align: center; padding: 36px 20px; color: var(--bad); }
+.error-state .empty__text { color: var(--ink-2); }
+.callout--info { background: var(--scrub-tint); color: var(--scrub-deep); }
+
+/* readiness additions */
+.row--priority td:first-child { box-shadow: inset 3px 0 0 var(--warn-dot); }
+.cell-title .pill { margin-left: 6px; vertical-align: middle; }
+.case-tools { display: flex; justify-content: flex-end; margin-top: -10px; }
+.case-bars li { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(80px, 1fr) auto; gap: 4px 12px; align-items: center; padding: 10px 20px; border-bottom: 1px solid var(--line); }
+.case-bars li:last-child { border-bottom: 0; }
+.case-bars .cell-sub { grid-column: 1; }
+.case-bars .bars__track { grid-row: 1 / span 2; grid-column: 2; }
+.case-bars .small { grid-row: 1 / span 2; grid-column: 3; }
